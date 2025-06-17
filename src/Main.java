@@ -2,11 +2,11 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
-        String inputFile = "romeo_and_juliet.txt";
-        String outputFile = "longest_word.txt";
+        String inputFile = "C:\\Users\\mp2dbv86\\IdeaProjects\\homework14\\src\\romeo_and_juliet.txt";
+        String outputFile = "C:\\Users\\mp2dbv86\\IdeaProjects\\homework14\\src\\longest_word.txt";
         String longestWord = "";
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile)))) {
             String s;
             while ((s = reader.readLine()) != null) {
                 String[] words = s.split("[\\s.,;:!?()\"'-]+");
@@ -18,7 +18,7 @@ public class Main {
                 }
             }
 
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+            try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile)))) {
                 writer.write("Самое длинное слово: " + longestWord);
             }
             System.out.printf("Самое длинное слово %s записано в файл", longestWord);
